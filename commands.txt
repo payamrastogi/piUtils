@@ -1,0 +1,16 @@
+ssh logs
+```
+journalctl -u ssh
+```
+Add a new user 
+```
+sudo adduser <username>
+```
+
+List users:
+less /etc/passwd
+
+cowsay | fortune
+- https://gist.github.com/zlorb/4a3eff8981fcec8ca1c7
+- https://askubuntu.com/questions/16428/showing-a-cowsay-fortune-in-every-new-terminal-session
+- https://askubuntu.com/questions/345974/what-is-the-difference-between-adduser-and-useradd
