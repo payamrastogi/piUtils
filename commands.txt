@@ -9,6 +9,7 @@ sudo adduser <username>
 
 List users:
 less /etc/passwd
+getent passwd
 
 cowsay | fortune
 - https://gist.github.com/zlorb/4a3eff8981fcec8ca1c7
