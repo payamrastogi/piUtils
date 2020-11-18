@@ -2,9 +2,15 @@ ssh logs
 ```
 journalctl -u ssh
 ```
+
 Add a new user 
 ```
 sudo adduser <username>
+```
+
+Installing 'tree' command package
+```
+sudo apt-get install tree
 ```
 
 List users:
