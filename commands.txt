@@ -13,9 +13,28 @@ Installing 'tree' command package
 sudo apt-get install tree
 ```
 
+Installing 'docker' 
+https://www.youtube.com/watch?v=vv8x9HF-QNg
+```
+sudo apt-get install docker.io
+sudo apt-get install docker-compose
+```
+
 List users:
 less /etc/passwd
 getent passwd
+
+
+tomcat 
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <role rolename="admin-gui"/>
+  <role rolename="admin-scripts"/>
+  <user username="admin" password="******" roles="manager-gui,manager-script,manager-jmx,manager-status,admin-gui,admin-script"/>
+
+wget https://updates.jenkins-ci.org/download/war/2.267/jenkins.war
 
 cowsay | fortune
 - https://gist.github.com/zlorb/4a3eff8981fcec8ca1c7

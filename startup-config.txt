@@ -1,0 +1,13 @@
+# Follow below steps to configure executing a script on system reboot
+
+# open crontab in edit mode
+sudo crontab -e
+
+# Put a command to execute your script with @reboot prefix as below 
+@reboot sh <absolute path to your script> <any optional parameters your script may require> 
+
+# Check that your entry is correct with below command:
+sudo crontab -l
+
+# A sample command for tomcat startup is below
+# @reboot sh /etc/init.d/tomcat start
