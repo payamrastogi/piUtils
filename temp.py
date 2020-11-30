@@ -1,13 +1,24 @@
-#!/usr/bin/python
-from subprocess import PIPE, Popen
-from gpiozero import CPUTemperature
-from time import sleep, strftime, time
-#import matplotlib.pyplot as plt
-#plt.switch_backend('TkAgg')
-#plt.ion()
-#x = []
-#y = []
+#!/usr/bin/python3
 
+from gpiozero import CPUTemperature
+cpu_temp = CPUTemperature()
+print (cpu_temp.temperature)
+
+'''
+#%%
+from subprocess import PIPE, Popen
+import datetime as dt
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from gpiozero import CPUTemperature
+
+# Create figure for plotting
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+xs = []
+ys = []
+cpu = CPUTemperature()
+# Initialize communication with TMP102
 def get_cpu_temperature():
     """get cpu temperature using vcgencmd"""
     process = Popen(['vcgencmd', 'measure_temp'], stdout=PIPE)
@@ -15,18 +26,32 @@ def get_cpu_temperature():
     output = output.decode("utf-8")
     return float(output[output.rindex('=') + 1:output.rindex("'")])
 
-#print(get_cpu_temperature())
-cpu = CPUTemperature()
-# with open("/home/pi/workspace/piUtils/cpu_temp.csv", "a") as log:
-#     while True:
-#         temp = cpu.temperature
-#         #y.append(temp)
-#         #x.append(time())
-#         #plt.clf()
-#         #plt.scatter(x,y)
-#         #plt.plot(x,y)
-#         log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temp)))
-#         sleep(1)
-#         #plt.pause(1)
-#         #plt.draw()
-print(cpu.temperature)
+# This function is called periodically from FuncAnimation
+def animate(i, xs, ys):
+
+    # Read temperature (Celsius) from TMP102
+    temp_c = cpu.temperature
+    print (temp_c)
+    # Add x and y to lists
+    xs.append(dt.datetime.now().strftime('%H:%M:%S.%f'))
+    ys.append(temp_c)
+
+    # Limit x and y lists to 20 items
+    xs = xs[-20:]
+    ys = ys[-20:]
+
+    # Draw x and y lists
+    ax.clear()
+    ax.plot(xs, ys)
+
+    # Format plot
+    plt.xticks(rotation=45, ha='right')
+    plt.subplots_adjust(bottom=0.30)
+    plt.title('CPU Temperature over Time')
+    plt.ylabel('Temperature (deg C)')
+
+# Set up plot to call animate() function periodically
+ani = animation.FuncAnimation(fig, animate, fargs=(xs, ys), interval=1000)
+plt.show()
+# %%
+'''
